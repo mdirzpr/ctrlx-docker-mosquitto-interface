@@ -1,0 +1,3 @@
+/home/boschrexroth/etherCAT-interface/publish/arm64/libcomm_datalayer.so
+/home/boschrexroth/etherCAT-interface/publish/arm64/libzmq.so
+/home/boschrexroth/etherCAT-interface/publish/arm64/etherCAT.interface
