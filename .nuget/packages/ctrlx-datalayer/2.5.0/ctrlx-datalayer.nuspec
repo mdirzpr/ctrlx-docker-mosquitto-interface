@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ctrlX-DataLayer</id>
+    <version>2.5.0</version>
+    <authors>Bosch Rexroth AG</authors>
+    <license type="file">boschrexroth_tac_delivery.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <description>The Bosch Rexroth ctrlX Data Layer API for .NET</description>
+    <copyright>2022 Bosch Rexroth AG</copyright>
+    <tags>ctrlX AUTOMATION, ctrlX CORE, ctrlX DRIVE, Bosch Rexroth AG, www.ctrlx-automation.com, www.boschrexroth.com, ctrlX Datalayer, ctrlX Datalayer API, ctrlX Datalayer API Flatbuffers</tags>
+    <repository type="Git" url="https://github.com/boschrexroth/ctrlx-automation-sdk" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="FlatBuffers.Core" version="1.12.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

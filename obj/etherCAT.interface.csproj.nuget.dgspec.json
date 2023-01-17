@@ -21,7 +21,7 @@
           "net6.0"
         ],
         "sources": {
-          "/home/nuget": {},
+          "/home/boschrexroth/etherCAT-interface/.nuget/packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,31 +68,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-arm64",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-arm64",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
-              "version": "[6.0.11, 6.0.11]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.403/RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux-arm64": {
-          "#import": []
         }
       }
     }

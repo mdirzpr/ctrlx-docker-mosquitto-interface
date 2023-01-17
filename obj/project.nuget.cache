@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "exjK1lMfGbmPcfpKR3zY5TQLHJ7e+hSp/+HO9Eq7grJj2FWJN0Ab7v8zO3sj+RVZH09LbjPsdURwyX8kCgWo6A==",
+  "dgSpecHash": "6Xas9K8sOFcz//w2KsJzjnTS3rhdxMM/dXeVqcSshdjHsSITOgdfmy+eNSU7kTupz0CKanMG2V8jnZTbSuIpqQ==",
   "success": true,
   "projectFilePath": "/home/boschrexroth/etherCAT-interface/etherCAT.interface.csproj",
   "expectedPackageFiles": [
@@ -9,10 +9,7 @@
     "/home/boschrexroth/.nuget/packages/flatbuffers.core/1.12.0/flatbuffers.core.1.12.0.nupkg.sha512",
     "/home/boschrexroth/.nuget/packages/microsoft.extensions.configuration/5.0.0/microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "/home/boschrexroth/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
-    "/home/boschrexroth/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
-    "/home/boschrexroth/.nuget/packages/microsoft.netcore.app.runtime.linux-arm64/6.0.11/microsoft.netcore.app.runtime.linux-arm64.6.0.11.nupkg.sha512",
-    "/home/boschrexroth/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-arm64/6.0.11/microsoft.aspnetcore.app.runtime.linux-arm64.6.0.11.nupkg.sha512",
-    "/home/boschrexroth/.nuget/packages/microsoft.netcore.app.host.linux-arm64/6.0.11/microsoft.netcore.app.host.linux-arm64.6.0.11.nupkg.sha512"
+    "/home/boschrexroth/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

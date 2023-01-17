@@ -135,95 +135,6 @@
           }
         }
       }
-    },
-    "net6.0/linux-arm64": {
-      "ctrlX-DataLayer/2.5.0": {
-        "type": "package",
-        "dependencies": {
-          "FlatBuffers.Core": "1.12.0"
-        },
-        "compile": {
-          "lib/net6.0/datalayer.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "runtimes/linux-arm64/lib/net6.0/datalayer.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "native": {
-          "runtimes/linux-arm64/native/libcomm_datalayer.so": {},
-          "runtimes/linux-arm64/native/libzmq.so": {}
-        }
-      },
-      "ctrlX-DataLayer.Flatbuffers/1.16.0": {
-        "type": "package",
-        "dependencies": {
-          "FlatBuffers.Core": "1.12.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/datalayer.fbs.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/datalayer.fbs.dll": {}
-        }
-      },
-      "FlatBuffers.Core/1.12.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/FlatBuffers.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/FlatBuffers.Core.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Configuration/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Primitives": "5.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "5.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.Extensions.Primitives/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
-        }
-      }
     }
   },
   "libraries": {
@@ -380,7 +291,7 @@
         "net6.0"
       ],
       "sources": {
-        "/home/nuget": {},
+        "/home/boschrexroth/etherCAT-interface/.nuget/packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -427,31 +338,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Runtime.linux-arm64",
-            "version": "[6.0.11, 6.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.linux-arm64",
-            "version": "[6.0.11, 6.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
-            "version": "[6.0.11, 6.0.11]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
         "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.403/RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "linux-arm64": {
-        "#import": []
       }
     }
   }
