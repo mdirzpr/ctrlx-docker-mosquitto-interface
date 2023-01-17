@@ -47,7 +47,7 @@ namespace Samples.Datalayer.Client
             Console.WriteLine("ctrlX Data Layer system started.");
 
             // Create a connection string with the parameters according to your environment (see DatalayerHelper class)
-            var connectionString = DatalayerHelper.GetConnectionString(ip: "192.168.1.1", sslPort: 443);
+            var connectionString = DatalayerHelper.GetConnectionString(ip: "192.168.1.100", sslPort: 443);
 
             // Create the client with remote connection string
             using var client = system.Factory.CreateClient(connectionString);

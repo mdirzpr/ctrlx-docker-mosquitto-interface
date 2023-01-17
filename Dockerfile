@@ -16,4 +16,4 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 
 # Run the service
-ENTRYPOINT ["dotnet", "ethercat_interface.dll"]
+ENTRYPOINT ["dotnet", "etherCAT.interface.dll"]
