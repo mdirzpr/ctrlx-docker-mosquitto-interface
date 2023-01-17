@@ -134,6 +134,19 @@
             "related": ".xml"
           }
         }
+      },
+      "WebDav.Client/2.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/WebDav.Client.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDav.Client.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
       }
     }
   },
@@ -261,12 +274,34 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WebDav.Client/2.8.0": {
+      "sha512": "Q/DhQ7qVelCEUqd3fi75SjZEJibjLpvMlCJbR30YWF1fotFCVjyVIv7oIHUWtyXVUhBoYvn1ATgWc7UA7e1/iQ==",
+      "type": "package",
+      "path": "webdav.client/2.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net45/WebDav.Client.dll",
+        "lib/net45/WebDav.Client.pdb",
+        "lib/net45/WebDav.Client.xml",
+        "lib/netstandard1.1/WebDav.Client.dll",
+        "lib/netstandard1.1/WebDav.Client.pdb",
+        "lib/netstandard1.1/WebDav.Client.xml",
+        "lib/netstandard2.0/WebDav.Client.dll",
+        "lib/netstandard2.0/WebDav.Client.pdb",
+        "lib/netstandard2.0/WebDav.Client.xml",
+        "webdav.client.2.8.0.nupkg.sha512",
+        "webdav.client.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "FlatBuffers.Core >= 1.12.0",
       "Microsoft.Extensions.Configuration >= 5.0.0",
+      "WebDav.Client >= 2.8.0",
       "ctrlX-DataLayer >= 2.5.0",
       "ctrlX-DataLayer.Flatbuffers >= 1.16.0"
     ]
@@ -317,6 +352,10 @@
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "WebDav.Client": {
+            "target": "Package",
+            "version": "[2.8.0, )"
           },
           "ctrlX-DataLayer": {
             "target": "Package",

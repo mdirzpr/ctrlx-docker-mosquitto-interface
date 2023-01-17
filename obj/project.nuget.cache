@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6Xas9K8sOFcz//w2KsJzjnTS3rhdxMM/dXeVqcSshdjHsSITOgdfmy+eNSU7kTupz0CKanMG2V8jnZTbSuIpqQ==",
+  "dgSpecHash": "qI9YlSanPwuCcLX1KbghfFDhwJbPiMN4+YmAKxtTlBfmAh47C/S96rf1Tn0Uu9Eo0s1o8RJhHUFAJusEW8vTow==",
   "success": true,
   "projectFilePath": "/home/boschrexroth/etherCAT-interface/etherCAT.interface.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,8 @@
     "/home/boschrexroth/.nuget/packages/flatbuffers.core/1.12.0/flatbuffers.core.1.12.0.nupkg.sha512",
     "/home/boschrexroth/.nuget/packages/microsoft.extensions.configuration/5.0.0/microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "/home/boschrexroth/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
-    "/home/boschrexroth/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+    "/home/boschrexroth/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "/home/boschrexroth/.nuget/packages/webdav.client/2.8.0/webdav.client.2.8.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+
 using comm.datalayer;
 using Datalayer;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,7 +38,7 @@ namespace Samples.Datalayer.Client
         /// The Main method is the entry point of an executable app.
         /// </summary>
         /// <param name="args">The args<see cref="string"/>.</param>
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // Create a new ctrlX Data Layer system
             using var system = new DatalayerSystem();
@@ -47,7 +49,8 @@ namespace Samples.Datalayer.Client
             Console.WriteLine("ctrlX Data Layer system started.");
 
             // Create a connection string with the parameters according to your environment (see DatalayerHelper class)
-            var connectionString = DatalayerHelper.GetConnectionString(ip: "192.168.1.100", sslPort: 443);
+            var ip_address = "192.168.1.100";
+            var connectionString = DatalayerHelper.GetConnectionString(ip: ip_address, sslPort: 443);
 
             // Create the client with remote connection string
             using var client = system.Factory.CreateClient(connectionString);
@@ -60,6 +63,13 @@ namespace Samples.Datalayer.Client
                 Console.WriteLine($"Client is not connected -> exit");
                 return;
             }
+
+            // WebDav configuration
+            var webDavInterface = new WebDavInterface("192.168.1.100", "443", "sgilk", "sgilk");
+            var root_URI = "https://192.168.1.100:443/solutions/webdav/appdata/comm.ethercat.master/config/ethercatmaster/ethercat.xml";
+            await webDavInterface.Browse("solutions/webdav/appdata/comm.ethercat.master/config/ethercatmaster/");
+            await webDavInterface.Client.Delete(root_URI);
+            await webDavInterface.Client.PutFile("https://192.168.1.100:443/solutions/webdav/appdata/comm.ethercat.master/config/ethercatmaster/ethercat.xml", File.OpenRead("TEST/ethercat_new.xml")); // upload a resource
 
             // Define the subscription properties by using helper class SubscriptionPropertiesBuilder.
             var propertiesFlatbuffers = new SubscriptionPropertiesBuilder("mySubscription")
@@ -84,9 +94,12 @@ namespace Samples.Datalayer.Client
                 var notifyInfo = NotifyInfo.GetRootAsNotifyInfo(eventArgs.Item.Info.ToFlatbuffers());
                 var timestamp = DateTime.FromFileTime(Convert.ToInt64(notifyInfo.Timestamp));
                 var timeStampFile = timestamp.ToString("MM/dd/yyyy hh:mm:ss.fff tt");
-                if(notifyInfo.Node == ""){
+                if (notifyInfo.Node == "")
+                {
                     Console.WriteLine($"{timeStampFile}, No value change.");
-                } else {
+                }
+                else
+                {
                     Console.WriteLine($"{timeStampFile}, {notifyInfo.Node}: {eventArgs.Item.Value.ToFloat()} (subscription)");
                 }
 
@@ -104,7 +117,8 @@ namespace Samples.Datalayer.Client
             //Just keep the process running
             while (true)
             {
-                if(!client.IsConnected){
+                if (!client.IsConnected)
+                {
                     Console.WriteLine("Client disconnected.");
                 }
                 Thread.Sleep(1000);
