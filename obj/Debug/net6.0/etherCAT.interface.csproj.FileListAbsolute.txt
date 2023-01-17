@@ -32,3 +32,4 @@
 /home/boschrexroth/etherCAT-interface/obj/Debug/net6.0/etherCAT.interface.pdb
 /home/boschrexroth/etherCAT-interface/obj/Debug/net6.0/etherCAT.interface.genruntimeconfig.cache
 /home/boschrexroth/etherCAT-interface/obj/Debug/net6.0/ref/etherCAT.interface.dll
+/home/boschrexroth/etherCAT-interface/bin/Debug/net6.0/WebDav.Client.dll
