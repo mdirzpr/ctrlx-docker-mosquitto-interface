@@ -1,0 +1,7 @@
+# .gitignore
+
+parts
+prime
+publish
+snap
+stage

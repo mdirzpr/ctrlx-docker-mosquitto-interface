@@ -1,3 +1,0 @@
-/home/boschrexroth/ctrlx-automation-sdk/samples-net/datalayer.client/publish/amd64/libcomm_datalayer.so
-/home/boschrexroth/ctrlx-automation-sdk/samples-net/datalayer.client/publish/amd64/libzmq.so
-/home/boschrexroth/ctrlx-automation-sdk/samples-net/datalayer.client/publish/amd64/datalayer.client
