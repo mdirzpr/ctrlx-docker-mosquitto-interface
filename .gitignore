@@ -1,7 +1,12 @@
 # .gitignore
 
+*.gz
 parts
 prime
 publish
 snap
 stage
+*.amd64
+*.arm64
+*venv
+*.deb

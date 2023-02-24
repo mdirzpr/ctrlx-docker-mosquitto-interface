@@ -3,10 +3,13 @@
 Dockerfile
 [b|B]in
 [O|o]bj
-build-snap-amd64.sh
-build-snap-arm64.sh
+*.sh
 parts
 prime
 publish
 snap
 stage
+/venv
+*.deb
+.vscode
+docker-compose
