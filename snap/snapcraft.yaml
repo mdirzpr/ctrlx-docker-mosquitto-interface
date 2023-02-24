@@ -2,12 +2,12 @@
 # See https://snapcraft.io/docs/getting-started
 # Snapcraft references
 # See https://snapcraft.io/docs/snapcraft-yaml-reference
-name: ctrlx-docker-mosquitto-plc
+name: ctrlx-docker-mosquitto-ethercat
 version: "1.0.0"
 base: core20
-summary: Containerized mosquitto broker with automated topic generation from PLC data
+summary: Containerized MQTT broker with automated topic generation from ethercat data
 description: |
-    This snap contains the docker images 'eclipsemosquitto:latest' and 'ctrlx-datalayer-mqtt-plc:latest'
+    This snap contains the docker images 'eclipsemosquitto:latest' and 'ctrlx-datalayer-mqtt-ethercat:latest'
     The files 'image.tar', 'image2.tar', 'docker-compose.yml' and 'docker-compose.env'
     are provided via content-interface 'docker-compose'.
     The content-interface 'docker-volumes' provides the container access to a directory inside this snap with write permissions.

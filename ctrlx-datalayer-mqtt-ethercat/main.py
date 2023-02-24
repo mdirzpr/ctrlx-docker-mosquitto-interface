@@ -24,12 +24,14 @@
 
 import sys
 
+import subprocess
+
 from comm.datalayer import Metadata
 
 import ctrlxdatalayer
 from ctrlxdatalayer.variant import Result, VariantType
 
-from helper.ctrlx_datalayer_helper import get_client
+from helper.ctrlx_datalayer_helper import get_client, connection_ip
 
 
 def main():
@@ -62,14 +64,18 @@ def main():
         print("System Stop", stop_ok)
 
 
-def browse_tree(client: ctrlxdatalayer.client.Client, converter: ctrlxdatalayer.system.Converter, address=""):
+def browse_tree(client: ctrlxdatalayer.client.Client, converter: ctrlxdatalayer.system.Converter, address="fieldbuses/ethercat/master/instances/ethercatmaster/realtime_data"):
 
     # print current address and get value of node
     node_value = get_value(client, converter, address)
+
     if node_value is None:
         print(address)
     else:
         print(address, node_value)
+        if type(node_value) is not list:
+            subprocess.run(["/app/mosquitto_publish.sh",
+                            connection_ip, address, str(node_value)])
 
     # Browse Data Layer tree
     result, data = client.browse_sync(address)

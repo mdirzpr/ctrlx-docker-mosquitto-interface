@@ -12,4 +12,5 @@ publish
 *venv
 *.deb
 .vscode
-docker-compose
+*.snap
+*.gz

@@ -10,10 +10,14 @@ COPY ctrlx-datalayer-mqtt-ethercat/ .
 # Install required packages
 RUN echo 'Installing requirements in image' &&\
     apt-get update &&\
-    apt-get install -y libzmq5 &&\
-    apt-get install -y pip &&\
+    apt-get install -y libzmq5 \
+    pip \
+    mosquitto-clients \
+    /app/ctrlx-datalayer-1.9.1.deb &&\
     pip3 install -r /app/requirements.txt &&\
-    apt-get install /app/ctrlx-datalayer-1.9.1.deb
+    chmod +x /app/mosquitto_publish.sh &&\
+    rm -rf /var/lib/apt/lists/* &&\
+    rm /app/ctrlx-datalayer-1.9.1.deb
 
 LABEL description="ctrlX Datalayer MQTT Ethercat Interface"
 LABEL maintainer="S-Gilk <https://github.com/S-Gilk>"
