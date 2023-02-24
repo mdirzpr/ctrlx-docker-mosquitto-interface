@@ -7,7 +7,11 @@ services:
             - 1883:1883
             - 9001:9001
         volumes:
-            - ${SNAP_DATA}/docker-compose/docker-mosquitto/config:/mosquitto/config
-            - ${SNAP_DATA}/docker-volumes/docker-mosquitto/data:/mosquitto/data
-            - ${SNAP_DATA}/docker-volumes/docker-mosquitto/log:/mosquitto/log
-        restart: always
+            - ${SNAP_DATA}/docker-compose/ctrlx-docker-mosquitto-plc/config:/mosquitto/config
+            - ${SNAP_DATA}/docker-volumes/ctrlx-docker-mosquitto-plc/data:/mosquitto/data
+            - ${SNAP_DATA}/docker-volumes/ctrlx-docker-mosquitto-plc/log:/mosquitto/log
+        restart: on-failure
+    ctrlx-datalayer-mqtt-plc:
+        image: ${IMAGE_NAME2}:${IMAGE_TAG2}
+        container_name: test1
+        restart: on-failure
