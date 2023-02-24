@@ -7,9 +7,9 @@ Dockerfile
 parts
 prime
 publish
-snap
-stage
-/venv
+/snap
+/stage
+*venv
 *.deb
 .vscode
 docker-compose

@@ -13,5 +13,5 @@ services:
         restart: on-failure
     ctrlx-datalayer-mqtt-plc:
         image: ${IMAGE_NAME2}:${IMAGE_TAG2}
-        container_name: test1
+        container_name: datalayer-mqtt-interface
         restart: on-failure

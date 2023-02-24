@@ -1,3 +1,3 @@
 docker container prune -f
-docker image prune -a -f
-docker build -t test .
+docker image rm test
+docker buildx build --platform linux/arm64,linux/amd64 -t test .

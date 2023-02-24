@@ -6,7 +6,6 @@ prime
 publish
 snap
 stage
-*.amd64
-*.arm64
+*.snap
 *venv
 *.deb
