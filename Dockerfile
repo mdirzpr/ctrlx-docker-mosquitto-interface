@@ -5,7 +5,7 @@ FROM ubuntu:20.04
 WORKDIR /app
 
 # Copy source code to image
-COPY ctrlx-datalayer-mqtt-plc/ .
+COPY ctrlx-datalayer-mqtt-ethercat/ .
 
 # Install required packages
 RUN echo 'Installing requirements in image' &&\
@@ -14,6 +14,9 @@ RUN echo 'Installing requirements in image' &&\
     apt-get install -y pip &&\
     pip3 install -r /app/requirements.txt &&\
     apt-get install /app/ctrlx-datalayer-1.9.1.deb
+
+LABEL description="ctrlX Datalayer MQTT Ethercat Interface"
+LABEL maintainer="S-Gilk <https://github.com/S-Gilk>"
 
 # Run the application
 CMD ["python3", "/app/main.py"]
