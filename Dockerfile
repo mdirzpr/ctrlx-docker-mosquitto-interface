@@ -5,7 +5,7 @@ FROM ubuntu:20.04
 WORKDIR /app
 
 # Copy source code to image
-COPY ctrlx-datalayer-mqtt-ethercat/ .
+COPY ctrlx-datalayer-mqtt-interface/ .
 
 # Install required packages
 RUN echo 'Installing requirements in image' &&\
@@ -19,7 +19,7 @@ RUN echo 'Installing requirements in image' &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm /app/ctrlx-datalayer-1.9.1.deb
 
-LABEL description="ctrlX Datalayer MQTT Ethercat Interface"
+LABEL description="ctrlX Datalayer MQTT Interface"
 LABEL maintainer="S-Gilk <https://github.com/S-Gilk>"
 
 # Run the application

@@ -1,16 +1,14 @@
-# .dockerignore
-
 Dockerfile
-[b|B]in
-[O|o]bj
+docker-compose/
 *.sh
-parts
-prime
+parts/
+prime/
 publish
-/snap
-/stage
-*venv
+snap/
+stage/
+venv/
 *.deb
 .vscode
 *.snap
 *.gz
+.git/

@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "ctrlx-datalayer-mqtt-ethercat/venv/bin/python3.8",
+    "python.pythonPath": "ctrlx-datalayer-mqtt-interface/venv/bin/python3.8",
     "python.formatting.provider": "autopep8"
 }
