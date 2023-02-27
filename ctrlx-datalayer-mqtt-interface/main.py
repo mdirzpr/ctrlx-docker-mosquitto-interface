@@ -35,7 +35,6 @@ from helper.ctrlx_datalayer_helper import get_client, connection_ip
 
 
 def main():
-
     with ctrlxdatalayer.system.System("") as datalayer_system:
         datalayer_system.start(False)
 
