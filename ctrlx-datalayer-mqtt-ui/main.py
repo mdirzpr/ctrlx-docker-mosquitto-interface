@@ -1,11 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import os
+import sys
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
+    return render_template('index.html')
+
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+    text = request.form['path']
+    print(text, file=sys.stderr)
     return render_template('index.html')
 
 
