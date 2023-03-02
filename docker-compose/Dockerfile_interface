@@ -5,7 +5,7 @@ FROM ubuntu:20.04
 WORKDIR /app
 
 # Copy source code to image
-COPY --from=project /ctrlx-datalayer-mqtt-interface/ .
+COPY --from=project . .
 
 # Install required packages
 RUN echo 'Installing requirements in image' &&\
@@ -16,6 +16,7 @@ RUN echo 'Installing requirements in image' &&\
     /app/ctrlx-datalayer-1.9.1.deb &&\
     pip3 install -r /app/requirements.txt &&\
     chmod +x /app/mosquitto_publish.sh &&\
+    chmod +x /app/echo.sh &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm /app/ctrlx-datalayer-1.9.1.deb &&\
     apt-get clean &&\

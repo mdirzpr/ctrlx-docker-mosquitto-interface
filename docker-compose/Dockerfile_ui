@@ -5,7 +5,7 @@ FROM python:3.12-rc-slim-buster
 WORKDIR /app
 
 # Copy source code to image
-COPY --from=project /ctrlx-datalayer-mqtt-ui/ .
+COPY --from=project . .
 
 # Install required packages
 RUN echo 'Installing requirements in image' &&\

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 -u
 
 # MIT License
 #
@@ -85,7 +85,7 @@ def main():
 
                 # Subscribe to MQTT root datalayer node
                 subscription_properties = ctrlxdatalayer.subscription.create_properties(
-                    "datalayer-client-sub", publish_interval=100)
+                    "datalayer-client-sub", publish_interval=1000)
                 if subscription_properties is None:
                     print("ERROR create_properties() returned: None")
                     sys.exit(1)
@@ -110,10 +110,10 @@ def main():
                             global address_input
                             if update_flag:
                                 update_flag = False
-                                if address_input != "":
+                                if address_input != "" and address_input is not None:
                                     browse_tree(
                                         datalayer_client, datalayer_system.json_converter(), address_input)
-                            time.sleep(5.0)
+                            time.sleep(1.0)
 
                         subscription.unsubscribe_all()
                         provider.stop()
@@ -126,7 +126,8 @@ def main():
 
 def rncb_root(result: Result, items: typing.List[ctrlxdatalayer.subscription.NotifyItem], userdata: ctrlxdatalayer.clib.userData_c_void_p):
     now = datetime.now().time()
-    print(now, "----------------------------------------------------------")
+    print(now, "--------------------------ROOT------------------------")
+    print(userdata)
     print("ResponseNotifyCallback", result)
 
     if result != Result.OK:
@@ -142,23 +143,31 @@ def rncb_root(result: Result, items: typing.List[ctrlxdatalayer.subscription.Not
 
     n = 1
     for item in items:
-        print("#", n)
-        print("  address:", item.get_address())
-        print("  type:", item.get_data().get_type())
-        print("  value:", item.get_data().get_string())
-        global address_input
-        address_input = item.get_data().get_string()
-        global update_flag
-        update_flag = True
-        print("  timestamp:", item.get_timestamp())
-        print("  datetime:", ctrlxdatalayer.subscription.to_datetime(
-            item.get_timestamp()))
-        n = n + 1
+        vt = item.get_data().get_type()
+        if vt == VariantType.UNKNON:
+            return
+        else:
+            print("#", n)
+            print("  address:", item.get_address())
+            vt = item.get_data().get_type()
+            print("  type:", vt)
+            value = item.get_data().get_string()
+            print("  value:", item.get_data().get_string())
+            if vt == VariantType.STRING:
+                global address_input
+                address_input = value
+                global update_flag
+                update_flag = True
+            print("  timestamp:", item.get_timestamp())
+            print("  datetime:", ctrlxdatalayer.subscription.to_datetime(
+                item.get_timestamp()))
+            n = n + 1
 
 
 def rncb_node(result: Result, items: typing.List[ctrlxdatalayer.subscription.NotifyItem], userdata: ctrlxdatalayer.clib.userData_c_void_p):
     now = datetime.now().time()
-    print(now, "----------------------------------------------------------")
+    print(now, "-------------------------NODE-------------------------")
+    print(userdata)
     print("ResponseNotifyCallback", result)
 
     if result != Result.OK:
@@ -174,155 +183,168 @@ def rncb_node(result: Result, items: typing.List[ctrlxdatalayer.subscription.Not
 
     n = 1
     for item in items:
-        print("#", n)
-        address = item.get_address()
-        print("  address:", address)
         vt = item.get_data().get_type()
-        print("  type:", vt)
-        data = item.get_data()
-        value = None
-        if vt == VariantType.ARRAY_BOOL8:
-            value = data.get_array_bool8()
-
-        if vt == VariantType.ARRAY_FLOAT32:
-            value = data.get_array_float32()
-
-        if vt == VariantType.ARRAY_FLOAT64:
-            value = data.get_array_float64()
-
-        if vt == VariantType.ARRAY_INT16:
-            value = data.get_array_int16()
-
-        if vt == VariantType.ARRAY_INT32:
-            value = data.get_array_int32()
-
-        if vt == VariantType.ARRAY_INT64:
-            value = data.get_array_int64()
-
-        if vt == VariantType.ARRAY_INT8:
-            value = data.get_array_int8()
-
-        if vt == VariantType.ARRAY_STRING:
-            value = data.get_array_string()
-
-        if vt == VariantType.ARRAY_UINT16:
-            value = data.get_array_uint16()
-
-        if vt == VariantType.ARRAY_UINT32:
-            value = data.get_array_uint32()
-
-        if vt == VariantType.ARRAY_UINT64:
-            value = data.get_array_uint64()
-
-        if vt == VariantType.ARRAY_UINT8:
-            value = data.get_array_uint8()
-
-        if vt == VariantType.BOOL8:
-            value = data.get_bool8()
-
-        if vt == VariantType.FLOAT32:
-            value = data.get_float32()
-
-        if vt == VariantType.FLOAT64:
-            value = data.get_float64()
-
-        if vt == VariantType.INT16:
-            value = data.get_int16()
-
-        if vt == VariantType.INT32:
-            value = data.get_int32()
-
-        if vt == VariantType.INT64:
-            value = data.get_int64()
-
-        if vt == VariantType.INT8:
-            value = data.get_int8()
-
-        if vt == VariantType.STRING:
-            value = data.get_string()
-
-        if vt == VariantType.UINT16:
-            value = data.get_uint16()
-
-        if vt == VariantType.UINT32:
-            value = data.get_uint32()
-
-        if vt == VariantType.UINT64:
-            value = data.get_uint64()
-
-        if vt == VariantType.UINT8:
-            value = data.get_uint8()
-
-        if value is None:
-            print("WARNING Unknown Variant Type:", vt)
+        if vt == VariantType.UNKNON:
+            return
         else:
-            print("  value:", value)
+            print("#", n)
+            address = item.get_address()
+            print("  address:", address)
+            print("  type:", vt)
+            data = item.get_data()
+            value = None
+            if vt == VariantType.ARRAY_BOOL8:
+                value = data.get_array_bool8()
 
-        if address != "":
-            subprocess.run(["/app/mosquitto_publish.sh",
-                            connection_ip, address, str(value)])
+            if vt == VariantType.ARRAY_FLOAT32:
+                value = data.get_array_float32()
 
-        print("  timestamp:", item.get_timestamp())
-        print("  datetime:", ctrlxdatalayer.subscription.to_datetime(
-            item.get_timestamp()))
-        n = n + 1
+            if vt == VariantType.ARRAY_FLOAT64:
+                value = data.get_array_float64()
+
+            if vt == VariantType.ARRAY_INT16:
+                value = data.get_array_int16()
+
+            if vt == VariantType.ARRAY_INT32:
+                value = data.get_array_int32()
+
+            if vt == VariantType.ARRAY_INT64:
+                value = data.get_array_int64()
+
+            if vt == VariantType.ARRAY_INT8:
+                value = data.get_array_int8()
+
+            if vt == VariantType.ARRAY_STRING:
+                value = data.get_array_string()
+
+            if vt == VariantType.ARRAY_UINT16:
+                value = data.get_array_uint16()
+
+            if vt == VariantType.ARRAY_UINT32:
+                value = data.get_array_uint32()
+
+            if vt == VariantType.ARRAY_UINT64:
+                value = data.get_array_uint64()
+
+            if vt == VariantType.ARRAY_UINT8:
+                value = data.get_array_uint8()
+
+            if vt == VariantType.BOOL8:
+                value = data.get_bool8()
+
+            if vt == VariantType.FLOAT32:
+                value = data.get_float32()
+
+            if vt == VariantType.FLOAT64:
+                value = data.get_float64()
+
+            if vt == VariantType.INT16:
+                value = data.get_int16()
+
+            if vt == VariantType.INT32:
+                value = data.get_int32()
+
+            if vt == VariantType.INT64:
+                value = data.get_int64()
+
+            if vt == VariantType.INT8:
+                value = data.get_int8()
+
+            if vt == VariantType.STRING:
+                value = data.get_string()
+
+            if vt == VariantType.UINT16:
+                value = data.get_uint16()
+
+            if vt == VariantType.UINT32:
+                value = data.get_uint32()
+
+            if vt == VariantType.UINT64:
+                value = data.get_uint64()
+
+            if vt == VariantType.UINT8:
+                value = data.get_uint8()
+
+            if vt == VariantType.FLATBUFFERS:
+                print("Flatbuffers not supported")
+                value = ""
+
+            if value is None:
+                print("WARNING Unknown Variant Type:", vt)
+            else:
+                print("  value:", value)
+
+            if address != "":
+                subprocess.run(["/app/mosquitto_publish.sh",
+                                connection_ip, address, str(value)])
+
+            print("  timestamp:", item.get_timestamp())
+            print("  datetime:", ctrlxdatalayer.subscription.to_datetime(
+                item.get_timestamp()))
+            n = n + 1
 
 
-def subscribe_single(client: Client, subscription_properties: Variant, address: str, callback):
+def subscribe_single(client: Client, subscription_properties: Variant, address: str, callback: ctrlxdatalayer.subscription.ResponseNotifyCallback):
 
-    print("subscribe_single() +++++++++++++++++++++++++++++++++++++++++++++++")
-
-    result, subscription = client.create_subscription_sync(
-        subscription_properties, callback)
-    if result != Result.OK:
-        print("ERROR create_subscription_sync() failed with:", result)
-        return result, None
-
-    if subscription is None:
-        print("ERROR create_subscription_sync() returned: None")
-        return Result.CREATION_FAILED, None
-
-    result = subscription.subscribe(address)
-
-    return result, subscription
-
-
-def browse_tree(client: ctrlxdatalayer.client.Client, converter: ctrlxdatalayer.system.Converter, address="fieldbuses/ethercat/master/instances/ethercatmaster/realtime_data"):
-
-    # print current address and get value of node
-    node_value = get_value(client, converter, address)
-
-    if node_value is None:
-        print(address)
-    else:
-        print(address, node_value)
-        if type(node_value) is not list:
-            # Publish updated nodes to MQTT broker
-            subprocess.run(["/app/mosquitto_publish.sh",
-                            connection_ip, address, str(node_value)])
-            # Subscribe to new topics on datalayer
-            subscription_properties = ctrlxdatalayer.subscription.create_properties(
-                address, publish_interval=100)
-            result, subscription = subscribe_single(
-                client, subscription_properties, address, rncb_node)
-            if result != Result.OK:
-                print("ERROR subscribe_single() failed with:", result)
-                sys.exit(1)
-
-            if subscription is None:
-                print("ERROR subscribe_single() returned None")
-                sys.exit(1)
-
-    # Browse Data Layer tree
-    result, data = client.browse_sync(address)
-    if result != Result.OK:
-        print("ERROR Browsing Data Layer failed with: ", result)
+    print(
+        f"subscribe_single() +++++++++++++++:{address}")
+    if address == "" or address is None:
+        print("ERROR subscribe_single() failed with: invalid address")
         return
-    with data:
-        # Recursive loop
-        nodes = data.get_array_string()
-        for node in nodes:
-            browse_tree(client, converter, address + "/" + node)
+    else:
+        result, subscription = client.create_subscription_sync(
+            subscription_properties, callback, address)
+
+        if result != Result.OK:
+            print("ERROR create_subscription_sync() failed with:", result)
+            return result, None
+
+        if subscription is None:
+            print("ERROR create_subscription_sync() returned: None")
+            return Result.CREATION_FAILED, None
+
+        if address is not None and address != "":
+            result = subscription.subscribe(address)
+
+        return result, subscription
+
+
+def browse_tree(client: ctrlxdatalayer.client.Client, converter: ctrlxdatalayer.system.Converter, address: str):
+    if address is None or address == "":
+        print("ERROR Browsing Data Layer failed with: NoneType address")
+        return
+    else:
+        # print current address and get value of node
+        node_value = get_value(client, converter, address)
+
+        if node_value is None:
+            print(address)
+        else:
+            if type(node_value) is not list:
+                # Subscribe to new topics on datalayer
+                subscription_properties = ctrlxdatalayer.subscription.create_properties(
+                    address, publish_interval=100)
+                subprocess.run(["/app/echo.sh", address])
+                result, subscription = subscribe_single(
+                    client, subscription_properties, address, rncb_node)
+                if result != Result.OK:
+                    print("ERROR subscribe_single() failed with:", result)
+                    sys.exit(1)
+
+                if subscription is None:
+                    print("ERROR subscribe_single() returned None")
+                    sys.exit(1)
+
+        # Browse Data Layer tree
+        result, data = client.browse_sync(address)
+        if result != Result.OK:
+            print("ERROR Browsing Data Layer failed with: ", result)
+            return
+        with data:
+            # Recursive loop
+            nodes = data.get_array_string()
+            for node in nodes:
+                browse_tree(client, converter, address + "/" + node)
 
 
 def get_value(client: ctrlxdatalayer.client.Client, converter: ctrlxdatalayer.system.Converter, address: str):
