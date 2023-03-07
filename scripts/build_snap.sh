@@ -1,4 +1,6 @@
 #!/bin/bash
+cd ..
+
 TARGET_ARCH=$1
 echo TARGET_ARCH: ${TARGET_ARCH}
 echo --- clean snap

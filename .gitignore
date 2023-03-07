@@ -4,8 +4,9 @@
 parts
 prime
 publish
-snap
 stage
 *.snap
 *venv
 *.deb
+.editorconfig/
+.vscode/

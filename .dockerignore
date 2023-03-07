@@ -12,3 +12,5 @@ venv/
 *.snap
 *.gz
 .git/
+.editorconfig/
+.vscode/
