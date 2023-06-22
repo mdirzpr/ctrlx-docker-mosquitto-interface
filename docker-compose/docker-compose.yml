@@ -1,9 +1,22 @@
 services:
-    secomea:
+    mosquitto:
         image: ${IMAGE_NAME}:${IMAGE_TAG}
-        container_name: secomea
+        container_name: mosquitto
         ports:
-            - 11444:11444
+            - 1883:1883
+            - 9001:9001
         volumes:
-            - ${SNAP_DATA}/docker-volumes/ctrlx-docker-secomea:/etc/sitemanager:rw
+            - ${SNAP_DATA}/docker-compose/ctrlx-docker-mosquitto-interface/config:/mosquitto/config
+            - ${SNAP_DATA}/docker-volumes/ctrlx-docker-mosquitto-interface/data:/mosquitto/data
+            - ${SNAP_DATA}/docker-volumes/ctrlx-docker-mosquitto-interface/log:/mosquitto/log
+        restart: on-failure
+    ctrlx-datalayer-mqtt-interface:
+        image: ${IMAGE_NAME2}:${IMAGE_TAG2}
+        container_name: ctrlx-datalayer-mqtt-interface
+        restart: on-failure
+    ctrlx-datalayer-mqtt-ui:
+        image: ${IMAGE_NAME3}:${IMAGE_TAG3}
+        container_name: ctrlx-datalayer-mqtt-ui
+        ports:
+            - 5000:5000
         restart: on-failure

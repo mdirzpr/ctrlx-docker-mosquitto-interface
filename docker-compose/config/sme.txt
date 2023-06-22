@@ -1,3 +1,0 @@
-Server=gm111.secomea.coms
-Domain=KEP.LORBRI_SECOMEA
-TEST
