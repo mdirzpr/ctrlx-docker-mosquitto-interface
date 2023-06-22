@@ -2,14 +2,13 @@
 # See https://snapcraft.io/docs/getting-started
 # Snapcraft references
 # See https://snapcraft.io/docs/snapcraft-yaml-reference
-name: ctrlx-docker-mosquitto-interface
-version: "1.1"
+name: ctrlx-docker-secomea
+version: "1.5"
 base: core20
-summary: Containerized MQTT broker with automated topic generation from datalayer data
+summary: Provides SiteManager Embedded container to ctrlX Container Engine
 description: |
-    This snap contains the docker images 'eclipsemosquitto:latest' and 'ctrlx-datalayer-mqtt-interface:latest'
-    The files 'image.tar', 'image2.tar', 'image3.tar', 'docker-compose.yml' and 'docker-compose.env'
-    are provided via content-interface 'docker-compose'.
+    This snap contains the docker image 'ctrlx-secomea:latest'.
+    The files 'image.tar', 'docker-compose.yml' and 'docker-compose.env' are provided via content-interface 'docker-compose'.
     The content-interface 'docker-volumes' provides the container access to a directory inside this snap with write permissions.
 grade: stable
 confinement: strict
@@ -20,6 +19,7 @@ parts:
         source: ./docker-compose
         organize:
             "*": docker-compose/${SNAPCRAFT_PROJECT_NAME}/
+
 slots:
     docker-compose:
         interface: content
@@ -27,9 +27,16 @@ slots:
         source:
             read:
                 - $SNAP/docker-compose/${SNAPCRAFT_PROJECT_NAME}
+
     docker-volumes:
         interface: content
         content: docker-volumes
         source:
             write:
                 - $SNAP_DATA/docker-volumes/${SNAPCRAFT_PROJECT_NAME}
+
+plugs:
+    active-solution:
+        interface: content
+        content: solutions
+        target: $SNAP_COMMON/solutions
