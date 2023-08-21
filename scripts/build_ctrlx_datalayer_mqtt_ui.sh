@@ -6,7 +6,7 @@ TARGET_ARCH=$1
 echo TARGET_ARCH: ${TARGET_ARCH}
 IMAGE_NAME3="ctrlx-datalayer-mqtt-ui"
 IMAGE_TAG3="latest"
-DOCKER_CLI="/snap/bin/docker"
+DOCKER_CLI=$(which docker)
 echo --- add image env variables
 echo IMAGE_NAME3=${IMAGE_NAME3} >> ../docker-compose/docker-compose.env
 echo IMAGE_TAG3=${IMAGE_TAG3} >> ../docker-compose/docker-compose.env
