@@ -5,6 +5,8 @@ Modified: mahdi.rezapour@smartfactory.de
 
 Description: Containerized MQTT broker for use with ctrlX CORE. Automates generation and update of MQTT topics from datalayer nodes.
 
+Tips: 
+
 * Check connection_ip variable and set your's in this file:
     ctrlx-datalayer-mqtt-interface -> helper -> ctrlx_datalayer_helper.py
 
