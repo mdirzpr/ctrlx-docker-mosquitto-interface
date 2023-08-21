@@ -6,7 +6,7 @@ TARGET_ARCH=$1
 echo TARGET_ARCH: ${TARGET_ARCH}
 IMAGE_NAME="eclipse-mosquitto"
 IMAGE_TAG="latest"
-DOCKER_CLI="/snap/bin/docker"
+DOCKER_CLI=$(which docker)
 echo --- create ../docker-compose/docker-compose.env
 rm -v -f ../docker-compose/docker-compose.env
 echo IMAGE_NAME=${IMAGE_NAME} >> ../docker-compose/docker-compose.env
