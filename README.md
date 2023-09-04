@@ -1,6 +1,7 @@
 # ctrlx-docker-mosquitto-interface
 
 Author: samuel.gilk@boschrexroth-us.com
+
 Modified: mahdi.rezapour@smartfactory.de
 
 Description: Containerized MQTT broker for use with ctrlX CORE. Automates generation and update of MQTT topics from datalayer nodes.
